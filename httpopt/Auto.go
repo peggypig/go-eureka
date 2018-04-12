@@ -10,6 +10,8 @@ import (
 )
 
 func init()  {
+	//自动注册
+	Register()
 	go autoSendHeartbeat()
 }
 

@@ -1,0 +1,24 @@
+# go-eureka
+go语言实现的简单的eureka client
+
+
+
+#Start
+```go
+package main
+
+import (
+	 _ "go-eureka/config"
+	_ "go-eureka/httpopt"
+	"net/http"
+	"io"
+	"time"
+)
+
+func main() {
+	http.HandleFunc("/" , func(writer http.ResponseWriter, request *http.Request) {
+		io.WriteString(writer,("hello "+time.Now().String()))
+	})
+	http.ListenAndServe(":8090",nil)
+}
+```
