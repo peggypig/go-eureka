@@ -8,8 +8,7 @@ go语言实现的简单的eureka client
 package main
 
 import (
-    _ "go-eureka/config"
-    _ "go-eureka/httpopt"
+    _ "go-eureka"
     "net/http"
     "io"
     "time"

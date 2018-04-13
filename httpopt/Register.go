@@ -16,7 +16,7 @@ import (
 var RegisterList []string
 
 
-func Register()  {
+func Register() {
 	eurekaConfig := config.GetEurekaConfig()
 	if len(eurekaConfig.Addresses)<=0 {
 		glog.Println("no value of config :'eureka'->'addresses'")

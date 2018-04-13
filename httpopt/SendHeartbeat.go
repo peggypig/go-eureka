@@ -18,7 +18,7 @@ func SendHeartbeat()  {
 	}else {
 		client := &http.Client{}
 		config := config.GetInstanceConfig()
-		for _,addr := range eurekaConfig.Addresses {
+		for _,addr := range RegisterList {
 			url := addr+"/apps/"+config.App+"/"+config.InstanceId
 			req , err :=http.NewRequest(http.MethodPut,url,nil)
 			if err != nil {
@@ -29,7 +29,7 @@ func SendHeartbeat()  {
 					glog.Println(err)
 				}else {
 					if resp.StatusCode == 200 {
-						glog.Println("send heartbeat success，code 200")
+						glog.Println("send heartbeat success，code 200:",addr)
 					}else if resp.StatusCode == 404 {
 						glog.Println("send heartbeat success，but this instance is not exits,code 404")
 					}else {

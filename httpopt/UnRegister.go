@@ -30,7 +30,7 @@ func UnRegister()  {
 					glog.Println(err)
 				}else {
 					if resp.StatusCode == 200 {
-						glog.Println("unRegister success，code 200")
+						glog.Println("unRegister success，code 200:",addr)
 						common.Remove(RegisterList,addr)
 					}
 				}
