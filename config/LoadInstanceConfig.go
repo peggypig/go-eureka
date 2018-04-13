@@ -117,12 +117,8 @@ func loadConfig()  {
 	if err !=  nil {
 		glog.Println(err)
 	}else {
-		if value, ok := configs["app"]; ok {
-			config.App = strings.ToUpper(value)
-		}
-		if value, ok := configs["instanceId"]; ok {
-			config.InstanceId = strings.ToUpper(value)
-		}
+
+
 		if value, ok := configs["ipAddr"]; ok {
 			//手动配置IP
 			config.IpAddr = value
@@ -151,8 +147,8 @@ func loadConfig()  {
 
 			//如果没有手动配置IP ，但是配置了IP过滤器
 			if value , ok := configs["ipPrefer"];ok {
-				ipAddrs ,_ := net.InterfaceAddrs()
-				for _, address := range ipAddrs{
+				ipAddr ,_ := net.InterfaceAddrs()
+				for _, address := range ipAddr{
 					if ipnet , ok :=address.(*net.IPNet);ok && !ipnet.IP.IsLoopback() && common.IsIpv4(ipnet.IP.String()){
 						if strings.HasPrefix(ipnet.IP.String(),value) {
 							config.IpAddr = ipnet.IP.String()
@@ -168,6 +164,22 @@ func loadConfig()  {
 					}
 				}
 			}
+		}
+
+		config.HostName= config.IpAddr
+		config.MetaDataInfo.Port = config.Port
+
+
+		if value, ok := configs["app"]; ok {
+			config.InstanceId =config.IpAddr+":"+ value +":"+config.Port
+			config.App =  value // strings.ToUpper(value)
+		}
+		if value, ok := configs["hostName"]; ok {
+			config.HostName = value
+		}
+
+		if value, ok := configs["instanceId"]; ok {
+			config.InstanceId = strings.ToUpper(value)
 		}
 		if value, ok := configs["status"]; ok {
 			realValue := strings.ToUpper(value)
@@ -204,9 +216,13 @@ func loadConfig()  {
 		}
 		if value, ok := configs["vipAddress"]; ok {
 			config.VipAddress = value
+		}else {
+			config.VipAddress = config.App
 		}
 		if value, ok := configs["secureVipAddress"]; ok {
 			config.SecureVipAddress = value
+		}else {
+			config.SecureVipAddress = config.App
 		}
 		if value, ok := configs["dataCenterInfoName"]; ok {
 			config.DataCenterInfo.Name = value

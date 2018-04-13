@@ -9,6 +9,7 @@ import "encoding/xml"
 
 type InstanceConfig struct {
 	Instance
-	XMLName 		xml.Name `xml:"instance"` // 指定最外层的标签为instance
+	XMLName        xml.Name       `xml:"instance"` // 指定最外层的标签为instance
 	DataCenterInfo DataCenterInfo `xml:"dataCenterInfo"`
+	MetaDataInfo   MetaData       `xml:"metadata"`
 }

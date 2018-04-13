@@ -24,12 +24,12 @@ func main() {
 }
 ```
 
-###### 简单配置参数  ./resources/go-eureka.ini
+###### 简单配置参数(推荐配置)  ./resources/go-eureka.ini
 ```ini
 [instance]
 ipPrefer=10.0.0
 port=8090
-
+app=UserProvider
 [eureka]
 addresses=eureka-1.domain.com,eureka-2.domain.com
 
