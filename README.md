@@ -4,6 +4,8 @@ go语言实现的简单的eureka client
 
 
 # Start
+
+###### 启动类
 ```go
 package main
 
@@ -22,7 +24,18 @@ func main() {
 }
 ```
 
-# 配置参数
+###### 配置参数  ./resources/go-eureka.ini
+```ini
+[instance]
+ipPrefer=10.0.0
+port=8090
+
+[eureka]
+addresses=eureka-1.domain.com,eureka-2.domain.com
+
+```
+
+# 配置参数说明
  配置文件路径 ./resources/go-eureka.ini
 
  注册参数说明：（☆放在\[instance\]下面）
