@@ -21,6 +21,8 @@ func autoSendHeartbeat() {
 		time.Sleep(25*time.Second)
 		if  len(RegisterList) >0 {
 			SendHeartbeat()
+		}else {
+			break
 		}
 	}
 }
