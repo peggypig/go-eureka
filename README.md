@@ -24,7 +24,7 @@ func main() {
 }
 ```
 
-###### 配置参数  ./resources/go-eureka.ini
+###### 简单配置参数  ./resources/go-eureka.ini
 ```ini
 [instance]
 ipPrefer=10.0.0
