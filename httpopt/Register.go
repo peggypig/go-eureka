@@ -34,6 +34,8 @@ func Register()  {
 					if resp.StatusCode == 204 {
 						glog.Println("register success，code 204",addr)
 						RegisterList = append(RegisterList, addr)
+					}else {
+						glog.Println("Registration Center address may be incorrect：",addr)
 					}
 				}
 			}
